@@ -5,7 +5,7 @@ import { Briefcase, Calendar, CheckCircle, TrendingUp } from 'lucide-react';
 const experience = {
     company: "Continuum Electroproducts Pvt Ltd",
     position: "Head of Accounts",
-    duration: "April 2021 - November 2025",
+    duration: "April 2021 - October 2025",
     responsibilities: [
         "Managed full-cycle accounts payable process for over 100 vendor accounts",
         "Ensured timely and accurate processing of vendor invoices and payments",

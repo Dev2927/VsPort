@@ -13,7 +13,7 @@ const education = [
     },
     {
         degree: "Senior Secondary School",
-        institution: "University of Delhi",
+        institution: "SKV",
         location: "New Delhi, India",
         year: "2015",
         icon: <GraduationCap />,

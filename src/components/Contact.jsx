@@ -20,15 +20,15 @@ const Contact = () => {
         setLoading(true);
 
         emailjs.send(
-            "YOUR_SERVICE_ID",
-            "YOUR_TEMPLATE_ID",
+            "service_7wpt2au",
+            "template_4qg811s",
             {
                 from_name: formData.name,
                 reply_to: formData.email,
                 subject: formData.subject,
                 message: formData.message,
             },
-            "YOUR_PUBLIC_KEY"
+            "yMtzSQzs0eegrG-1M"
         )
             .then(() => {
                 setSuccess("Your message has been sent successfully!");
