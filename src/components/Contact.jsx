@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Send, MapPin } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Contact = () => {
 
@@ -17,6 +18,12 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if(formData.email === "" || formData.message === "" || formData.name === "" || formData.subject === ""){
+            toast.error("All mark fields are required")
+            return
+        }
+
         setLoading(true);
 
         emailjs.send(
@@ -130,7 +137,7 @@ const Contact = () => {
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div>
                                         <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                                            Full Name
+                                            Full Name<span style={{color: "red"}}>*</span>
                                         </label>
                                         <input
                                             type="text"
@@ -138,7 +145,6 @@ const Contact = () => {
                                             name="name"
                                             value={formData.name}
                                             onChange={handleChange}
-                                            required
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-300"
                                             placeholder="Your name"
                                         />
@@ -146,7 +152,7 @@ const Contact = () => {
 
                                     <div>
                                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                                            Email Address
+                                            Email Address<span style={{color: "red"}}>*</span>
                                         </label>
                                         <input
                                             type="email"
@@ -154,7 +160,6 @@ const Contact = () => {
                                             name="email"
                                             value={formData.email}
                                             onChange={handleChange}
-                                            required
                                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-300"
                                             placeholder="you@example.com"
                                         />
@@ -163,7 +168,7 @@ const Contact = () => {
 
                                 <div>
                                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Subject
+                                        Subject<span style={{color: "red"}}>*</span>
                                     </label>
                                     <input
                                         type="text"
@@ -171,7 +176,6 @@ const Contact = () => {
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
-                                        required
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-300"
                                         placeholder="How can I help you?"
                                     />
@@ -179,14 +183,13 @@ const Contact = () => {
 
                                 <div>
                                     <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                                        Message
+                                        Message<span style={{color: "red"}}>*</span>
                                     </label>
                                     <textarea
                                         id="message"
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
-                                        required
                                         rows="5"
                                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors duration-300 resize-none"
                                         placeholder="Your message..."
@@ -212,8 +215,9 @@ const Contact = () => {
                     </motion.div>
                 </div>
             </div>
+            <Toaster />
         </section>
     );
 };
 
-export default Contact;
+export default React.memo(Contact);

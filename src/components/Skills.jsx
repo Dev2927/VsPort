@@ -3,6 +3,7 @@ import {
     BarChart3, FileText, Users, Clock,
     MessageSquare, Lightbulb, Target, PieChart
 } from 'lucide-react';
+import React from 'react';
 
 const skills = [
     { icon: <BarChart3 />, name: 'Financial Analysis', category: 'Technical' },
@@ -86,4 +87,4 @@ const Skills = () => {
     );
 };
 
-export default Skills;
+export default React.memo(Skills);

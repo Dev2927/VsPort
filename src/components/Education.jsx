@@ -125,4 +125,4 @@ const Education = () => {
     );
 };
 
-export default Education;
+export default React.memo(Education);

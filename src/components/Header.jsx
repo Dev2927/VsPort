@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Download } from 'lucide-react';
 
@@ -105,4 +105,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default React.memo(Header);
